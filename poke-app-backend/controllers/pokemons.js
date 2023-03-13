@@ -1,4 +1,5 @@
 const Pokemon = require("../models/pokemon");
+const ErrorResponse = require("../utils/errorResponse");
 
 // TODO: sort by created date & add pagination
 const getAllPokemons = async (req, res) => {
@@ -11,18 +12,37 @@ const getAllPokemons = async (req, res) => {
 };
 
 // TODO: getPokemonById
-const getPokemonById = async (req, res) => {
-  console.log("getPokemonById is not implemented yet");
+const getPokemonById = async (req, res, next) => {
+  res.json(req.reqPokemon);
 };
 
 // TODO: updatePokemon
-const updatePokemon = async (req, res) => {
-  console.log("updatePokemon is not implemented yet");
+const updatePokemon = async (req, res, next) => {
+  try {
+    // const deletedPokemon = await Pokemon.findByIdAndUpdate(req.params.id);
+    const updatedPokemon = await Pokemon.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    console.log("**&@&#@#&@#", updatedPokemon);
+    res.json(updatedPokemon);
+  } catch (error) {
+    next(new ErrorResponse(error));
+  }
 };
 
 // TODO: createPokemon
-const createPokemon = async (req, res) => {
-  console.log("createPokemon is not implemented yet");
+const createPokemon = async (req, res, next) => {
+  try {
+    const newPokemon = await Pokemon.create(req.body);
+    res.status(201).json(newPokemon);
+  } catch (error) {
+    next(new ErrorResponse(error));
+  }
 };
 
 // TODO: deletePokemon
