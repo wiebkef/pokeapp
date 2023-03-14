@@ -10,3 +10,15 @@ body,
   width: 100%;
 
 }
+:root{
+  --bg-color: #F4E4CC;
+  --font-color: #222327;
+  --sec-color: #AA455B;
+  --th-color: #123472;
+}
+
+@layer base{
+  body{
+    @apply bg-bg-color text-font-color
+  }
+}
