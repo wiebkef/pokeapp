@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+
+}
 :root{
   --bg-color: #F4E4CC;
   --font-color: #222327;
