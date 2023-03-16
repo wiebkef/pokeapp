@@ -1,24 +1,20 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { PokeDetails } from './PokeDetails';
-import Hero from './components/Hero';
-import Navbar from './components/Navbar';
-import Homedisplay from './components/Homedisplay';
+import { Routes, Route } from "react-router-dom";
+import { Home } from "./components/Home";
+
+import Navbar from "./components/Navbar";
+import { AddPokemon } from "./AddPokemon";
 
 function App() {
   return (
-    <div className='app'>
+    <div className="app">
       <Navbar />
-      <Hero />
-      <Homedisplay />
-      <BrowserRouter>
-        <Routes>
-          <Route path={'/'} />
-          <Route path={'/user_pokemon/'} />
-          <Route path={'/add_pokemon'} />
-          <Route path={'/update/:id'} />
-        </Routes>
-      </BrowserRouter>
-      <PokeDetails />
+
+      <Routes>
+        <Route path={"/"} element={<Home />} />
+        <Route path={"/user_pokemon"} />
+        <Route path={"/add_pokemon"} element={<AddPokemon />} />
+        <Route path={"/update/:id"} />
+      </Routes>
     </div>
   );
 }
