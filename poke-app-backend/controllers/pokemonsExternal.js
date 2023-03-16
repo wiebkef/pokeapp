@@ -7,7 +7,7 @@ const getAllExternalPokemons = async (req, res) => {
   const urls = [];
   for (
     let elem = (page - 1) * docsPerPage + 1;
-    elem < page * docsPerPage;
+    elem <= page * docsPerPage;
     elem++
   ) {
     urls.push(`${baseUrl}${elem}`);
@@ -30,6 +30,7 @@ const getAllExternalPokemons = async (req, res) => {
           rawPokemon.moves[1].move.name,
           rawPokemon.moves[2].move.name,
         ],
+        _id: rawPokemon.id,
       };
     });
     res.json(pokemons);
