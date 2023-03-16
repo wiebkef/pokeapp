@@ -10,15 +10,30 @@ body,
   width: 100%;
 
 }
-:root{
+
+:root {
   --bg-color: #F4E4CC;
   --font-color: #222327;
   --sec-color: #AA455B;
   --th-color: #123472;
 }
 
-@layer base{
-  body{
+@layer base {
+  body {
     @apply bg-bg-color text-font-color
   }
+}
+
+.inputFields {
+  margin: 15px 0;
+  font-size: 16px;
+  padding: 10px;
+  width: 250px;
+  border: 2px solid rgba(170, 69, 91, 1);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: rgba(20, 20, 20, .2);
+  color: white;
+  outline: none;
 }
