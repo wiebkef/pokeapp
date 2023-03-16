@@ -1,7 +1,7 @@
 import Charmander from "./Charmander.png";
 import title from "./title.png";
 
-export const PokeDetails = () => {
+const PokeDetails = () => {
   return (
     <>
       <img className="mx-auto" src={title} alt="" />
@@ -29,3 +29,5 @@ export const PokeDetails = () => {
     </>
   );
 };
+
+export default PokeDetails;
