@@ -1,8 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./components/Home";
-
+import Home from "./components/Home";
 import Navbar from "./components/Navbar";
-import { AddPokemon } from "./AddPokemon";
+import AddPokemon from "./AddPokemon";
+import Homedisplay from "./components/Homedisplay";
+import PokeDetails from "./PokeDetails";
 
 function App() {
   return (
@@ -10,10 +11,19 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path={"/"} element={<Home />} />
-        <Route path={"/user_pokemon"} />
+        <Route
+          path={"/"}
+          element={
+            <>
+              <Home />
+              <Homedisplay />
+            </>
+          }
+        />
+        <Route path={"/user_pokemon/"} />
         <Route path={"/add_pokemon"} element={<AddPokemon />} />
         <Route path={"/update/:id"} />
+        <Route path={"/pokemons/:id"} element={<PokeDetails />} />
       </Routes>
     </div>
   );

@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "./axiosInstance";
 import { useNavigate } from "react-router-dom";
 
-export const AddPokemon = () => {
+const AddPokemon = () => {
   const [form, setForm] = useState({});
   const [error, setError] = useState({});
   const navigate = useNavigate();
@@ -117,3 +117,4 @@ export const AddPokemon = () => {
     </div>
   );
 };
+export default AddPokemon;
