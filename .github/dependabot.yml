@@ -6,11 +6,6 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/poke-app-backend"
-    schedule:
-      interval: "weekly"
-
-  - package-ecosystem: "npm"
-    directory: "/poke-app-client"
+    directory: "/"
     schedule:
       interval: "weekly"
