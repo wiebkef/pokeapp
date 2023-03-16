@@ -1,29 +1,42 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "../axiosInstance";
 import "../App.css";
 
-function Homedisplay() {
-  console.log();
+function Homedisplay({ external }) {
+  let baseUrl;
+  external ? (baseUrl = "/api/collection") : (baseUrl = "/api/pokemons");
   const [pokemons, setPokemons] = useState([]);
-  const { _id } = useParams();
+
   useEffect(() => {
     axios
-      .get(`/api/pokemons/`)
-      .then((res) => setPokemons(res.data))
+      .get(baseUrl)
+      .then((res) => {
+        setPokemons(res.data);
+        console.log(res.data);
+      })
       .catch((e) => console.log(e));
-  }, [_id]);
+  }, []);
 
   return (
     <>
+      {external ? (
+        <h2 className="text-center text-2xl text-bold">
+          Check out new Pokemons
+        </h2>
+      ) : (
+        <h2>Your Pokemon Collection</h2>
+      )}
       <div className="grid-container">
         {pokemons.map((pokemon) => {
           return (
             <div key={pokemon._id}>
-              <figure className="card rounded-t-lg border border-solid border-orange-700 bg-yellow-200 hover:animate-pulse">
-                <img src={pokemon.image} alt="pokecard" />
-                <figcaption>{pokemon.name}</figcaption>
-              </figure>
+              <Link to={`/pokemons/${pokemon._id}`}>
+                <figure className="card rounded-t-lg border border-solid border-orange-700 bg-yellow-200 hover:animate-pulse">
+                  <img src={pokemon.image} alt="pokecard" />
+                  <figcaption>{pokemon.name}</figcaption>
+                </figure>
+              </Link>
             </div>
           );
         })}
