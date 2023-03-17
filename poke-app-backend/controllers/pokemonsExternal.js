@@ -1,8 +1,6 @@
-const axios = require("axios");
-
 const getAllExternalPokemons = async (req, res) => {
   const { page = 1, docsPerPage = 6 } = req.query;
-
+  console.log(req.query);
   const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
   const urls = [];
   for (
@@ -11,7 +9,7 @@ const getAllExternalPokemons = async (req, res) => {
     elem++
   ) {
     urls.push(`${baseUrl}${elem}`);
-    console.log(`${baseUrl}${elem}`);
+    //console.log(`${baseUrl}${elem}`);
   }
 
   try {
@@ -19,7 +17,7 @@ const getAllExternalPokemons = async (req, res) => {
       urls.map((url) => fetch(url).then((response) => response.json()))
     );
     const pokemons = rawPokemons.map((rawPokemon) => {
-      console.log(rawPokemon);
+      // console.log(rawPokemon);
 
       return {
         name: rawPokemon.name,
