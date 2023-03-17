@@ -1,18 +1,18 @@
-import { Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import Navbar from './components/Navbar';
-import AddPokemon from './AddPokemon';
-import Homedisplay from './components/Homedisplay';
-import PokeDetails from './PokeDetails';
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import AddPokemon from "./AddPokemon";
+import Homedisplay from "./components/Homedisplay";
+import PokeDetails from "./PokeDetails";
 
 function App() {
   return (
-    <div className='app'>
+    <div className="app">
       <Navbar />
 
       <Routes>
         <Route
-          path={'/'}
+          path={"/"}
           element={
             <>
               <Home />
@@ -21,22 +21,13 @@ function App() {
           }
         />
         <Route
-          path={'/user_pokemon/'}
+          path={"/user_pokemon/"}
           element={<Homedisplay external={false} />}
         />
-        <Route
-          path={'/add_pokemon'}
-          element={<AddPokemon />}
-        />
-        <Route path={'/update/:id'} />
-        <Route
-          path={'/pokemons/:id'}
-          element={<PokeDetails />}
-        />
-        <Route
-          path={'/search'}
-          element={<Homedisplay />}
-        />
+        <Route path={"/add_pokemon"} element={<AddPokemon />} />
+        <Route path={"/update/:id"} />
+        <Route path={"/pokemons/:id"} element={<PokeDetails />} />
+        <Route path={"/search"} element={<Homedisplay external={false} />} />
       </Routes>
     </div>
   );
