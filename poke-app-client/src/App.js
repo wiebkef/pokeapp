@@ -28,6 +28,7 @@ function App() {
         <Route path={"/add_pokemon"} element={<AddPokemon />} />
         <Route path={"/update/:id"} />
         <Route path={"/pokemons/:id"} element={<PokeDetails />} />
+        <Route path={"/search"} element={<Homedisplay />} />
       </Routes>
     </div>
   );

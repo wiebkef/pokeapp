@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { MdFavorite } from "react-icons/md";
 import { TbDetails } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import Search from "./Search";
 
 function Navbar() {
   const [nav, setNav] = useState(false);
-  const { pathname } = useLocation();
 
   return (
     <div className="max-w-[1640px] mx-auto flex justify-between items-center p-4">
@@ -22,16 +21,7 @@ function Navbar() {
         </h1>
       </div>
 
-      {pathname === "/" && (
-        <div className="border-b-2 border-[color:var(--sec-color)] flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
-          <AiOutlineSearch size={20} />
-          <input
-            className="bg-transparent p-2 w-full focus:outline-none"
-            type="text"
-            placeholder="Search Pokes"
-          />
-        </div>
-      )}
+      <Search />
       <NavLink
         className="text-white bg-[color:var(--sec-color)] hidden md:flex items-center py-2 px-3 rounded-md hover:opacity-80"
         to="/"
