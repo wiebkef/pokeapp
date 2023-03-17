@@ -8,6 +8,7 @@ import PokeDetails from "./PokeDetails";
 function App() {
   return (
     <div className="app">
+      <p>hello world</p>
       <Navbar />
 
       <Routes>
