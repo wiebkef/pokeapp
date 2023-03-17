@@ -8,6 +8,7 @@ import PokeDetails from "./PokeDetails";
 function App() {
   return (
     <div className="app">
+      <p>hello world</p>
       <Navbar />
 
       <Routes>
@@ -16,11 +17,14 @@ function App() {
           element={
             <>
               <Home />
-              <Homedisplay />
+              <Homedisplay external={true} />
             </>
           }
         />
-        <Route path={"/user_pokemon/"} />
+        <Route
+          path={"/user_pokemon/"}
+          element={<Homedisplay external={false} />}
+        />
         <Route path={"/add_pokemon"} element={<AddPokemon />} />
         <Route path={"/update/:id"} />
         <Route path={"/pokemons/:id"} element={<PokeDetails />} />

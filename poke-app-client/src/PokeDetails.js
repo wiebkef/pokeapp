@@ -1,17 +1,40 @@
-import Charmander from "./Charmander.png";
 import title from "./title.png";
+import axios from "./axiosInstance";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const PokeDetails = () => {
+  const [pokemonData, setPokemonData] = useState(null);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchPokemonData = async () => {
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${id}`
+      );
+      console.log(response.data);
+      setPokemonData(response.data);
+    };
+
+    fetchPokemonData();
+  }, [id]);
+
   return (
     <>
       <img className="mx-auto" src={title} alt="" />
       <div className="grid place-items-center h-full">
-        <div className="w-full lg:w-2/3 border-2 border-[#F09953] h-96 rounded-lg grid grid-cols-3">
-          <div id="poke-details" className="col-span-2 bg-[#F09953]">
-            <h2 className="text-center text-4xl underline">Charmander</h2>
+        <div
+          className={`w-full lg:w-2/3 border-2  h-96 rounded-lg grid grid-cols-3`}
+        >
+          <div id="poke-details" className={`col-span-2 `}>
+            <h2 className="text-center text-4xl underline">
+              {pokemonData?.name}
+            </h2>
             <div className="flex flex-col mt-16">
               <h2 className="text-center text-3xl font-extrabold">Type</h2>
-              <h2 className="text-center text-2xl">Fire</h2>
+              <h2 className="text-center text-2xl">
+                {pokemonData?.types?.[0].type.name}
+              </h2>
             </div>
             <div className="flex flex-col mt-16">
               <h2 className="text-center text-3xl font-extrabold">Attacks</h2>
@@ -20,9 +43,13 @@ const PokeDetails = () => {
           </div>
           <div
             id="poke-img"
-            className="h-full grid place-items-center border-2 border-[#F09953]"
+            className={`h-full grid place-items-center border-2 `}
           >
-            <img src={Charmander} alt="" className="h-80" />
+            <img
+              src={pokemonData?.sprites?.front_default}
+              alt=""
+              className="h-80"
+            />
           </div>
         </div>
       </div>
