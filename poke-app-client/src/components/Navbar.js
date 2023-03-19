@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { MdFavorite } from "react-icons/md";
-import { TbDetails } from "react-icons/tb";
-import { NavLink } from "react-router-dom";
-import Search from "./Search";
+import React, { useState } from 'react';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { MdFavorite } from 'react-icons/md';
+import { TbDetails } from 'react-icons/tb';
+import { NavLink } from 'react-router-dom';
+import Search from './Search';
 
 function Navbar() {
   const [nav, setNav] = useState(false);
 
   return (
-    <div className='max-w-[1640px] mx-auto flex justify-between items-center p-4'>
+    <div className='flex justify-between items-center mx-5 mt-3'>
       {/* left side */}
       <div className='flex items-center'>
         <div
@@ -17,10 +17,10 @@ function Navbar() {
           className='cursor-pointer'>
           <AiOutlineMenu
             className='text-[color:var(--sec-color)]'
-            size={30}
+            size={25}
           />
         </div>
-        <h1 className='text-[color:var(--sec-color)] font-bold text-2xl sm:text-3xl lg:text-4xl px-2'>
+        <h1 className='text-[color:var(--sec-color)] font-bold text-2 px-2 lg:text-3xl md:text-2xl'>
           POKE
           <span className='font-light'> WORLD</span>
         </h1>
@@ -28,28 +28,28 @@ function Navbar() {
 
       <Search />
 
-      <NavLink
-        className='text-white bg-[color:var(--sec-color)] hidden md:flex items-center py-2 px-3 rounded-md hover:opacity-80'
-        to='/'>
-        Home
-      </NavLink>
-      <NavLink
-        to='/user_pokemon'
-        className='text-white bg-[color:var(--sec-color)] hidden md:flex items-center py-2 px-3 rounded-md hover:opacity-80'>
-        User Pokemon
-      </NavLink>
-      <NavLink
-        to='/add_pokemon'
-        className='text-white bg-[color:var(--sec-color)] hidden md:flex items-center py-2 px-3 rounded-md hover:opacity-80'>
-        Add Pokemon
-      </NavLink>
+      <div className='flex-row flex justify-around gap-3'>
+        <NavLink
+          className='text-white bg-[color:var(--sec-color)] items-center rounded-md hover:opacity-80 px-2 py-1'
+          to='/'>
+          Home
+        </NavLink>
+        <NavLink
+          to='/user_pokemon'
+          className='text-white bg-[color:var(--sec-color)] items-center rounded-md hover:opacity-80 px-2 py-1'>
+          User Pokey
+        </NavLink>
+        <NavLink
+          to='/add_pokemon'
+          className='text-white bg-[color:var(--sec-color)] items-center rounded-md hover:opacity-80 px-2 py-1'>
+          Add Pokey
+        </NavLink>
+      </div>
 
       {/* mobile menu */}
       {/* Overlay */}
-      {nav ? (
+      {nav && (
         <div className='bg-black/80 fixed w-full h-screen z-10 top-0 left-0'></div>
-      ) : (
-        ''
       )}
 
       {/* side menu */}

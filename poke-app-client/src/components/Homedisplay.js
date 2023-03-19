@@ -77,7 +77,7 @@ function Homedisplay({ external }) {
               <div key={pokemon._id}>
                 <Link to={`/pokemons/${pokemon._id}`}>
                   <div
-                    className={`flex-shrink-0 m-6 relative overflow-hidden hover:animate-pulse active:animate-bounce rounded-lg max-w-xs shadow-lg ${backgroundColor}`}>
+                    className={`flex-shrink-0 m-6 relative overflow-hidden hover:animate-pulse active:animate-spin rounded-lg max-w-xs shadow-lg ${backgroundColor}`}>
                     <svg
                       className='absolute bottom-0 left-0 mb-8'
                       viewBox='0 0 375 283'
