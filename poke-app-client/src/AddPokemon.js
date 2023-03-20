@@ -1,30 +1,22 @@
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { useState } from "react";
-import axios from "./axiosInstance";
+
 import { useNavigate } from "react-router-dom";
 
-const AddPokemon = () => {
+const AddPokemon = ({ addUserPokemon }) => {
   const [form, setForm] = useState({});
   const [error, setError] = useState({});
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("/api/pokemons", form)
-      .then((res) => {
-        console.log(res.data);
-        navigate(`/user_pokemon/${res.data.id}`);
-      })
-      .catch((err) => {
-        console.log(err.response.data.errors);
-        setError(err.response.data.errors);
-      });
+    addUserPokemon(form);
+    navigate(`/user_pokemon/${form.id}`);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    setForm({ ...form, [name]: value, userAdded: true });
   };
 
   return (
@@ -63,7 +55,7 @@ const AddPokemon = () => {
                 onChange={handleChange}
                 type="text"
                 className="inputFields"
-                name="type"
+                name="pokeType"
                 placeholder="Type"
                 required
               />
