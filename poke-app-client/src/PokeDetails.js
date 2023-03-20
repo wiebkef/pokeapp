@@ -166,7 +166,10 @@ const PokeDetails = ({ userPokemons, setUserPokemons }) => {
             className={`h-full grid place-items-center border-2 ${borderColorClass}`}
           >
             <img
-              src={pokemonData?.sprites?.front_default || pokemonData?.image}
+              src={
+                pokemonData?.sprites?.other["official-artwork"].front_default ||
+                pokemonData?.image
+              }
               alt=""
               className="h-80"
             />
