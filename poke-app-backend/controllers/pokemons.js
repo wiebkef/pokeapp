@@ -2,10 +2,15 @@ const Pokemon = require("../models/pokemon");
 const ErrorResponse = require("../utils/errorResponse");
 
 const getAllPokemons = async (req, res) => {
-  const { page = 1, docsPerPage = 6 } = req.query;
+  const { page = 1, docsPerPage = 6, query = "" } = req.query;
 
   try {
-    const pokemons = await Pokemon.find()
+    const pokemons = await Pokemon.find({
+      name: {
+        $regex: query,
+        $options: "i",
+      },
+    })
       .sort({ updatedAt: "desc" })
       .limit(docsPerPage)
       .skip((page - 1) * docsPerPage);
