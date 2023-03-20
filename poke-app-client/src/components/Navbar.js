@@ -43,7 +43,7 @@ function Navbar() {
         className='text-white bg-[color:var(--sec-color)] hidden md:flex items-center py-2 px-3 rounded-md hover:opacity-80'>
         Add Pokemon
       </NavLink>
-
+      
       {/* mobile menu */}
       {/* Overlay */}
       {nav ? (

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import AddPokemon from './AddPokemon';
 import Homedisplay from './components/Homedisplay';
 import PokeDetails from './PokeDetails';
+import UpdatePokemon from './UpdatePokemon';
 
 function App() {
   return (
@@ -28,7 +29,9 @@ function App() {
           path={'/add_pokemon'}
           element={<AddPokemon />}
         />
-        <Route path={'/update/:id'} />
+        <Route path={'/update/:id'} 
+        element={<UpdatePokemon/>} 
+        />
         <Route
           path={'/pokemons/:id'}
           element={<PokeDetails />}

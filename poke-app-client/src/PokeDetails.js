@@ -1,7 +1,7 @@
 import title from "./title.png";
 import axios from "./axiosInstance";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 
 const PokeDetails = () => {
   const [pokemonData, setPokemonData] = useState(null);
@@ -51,6 +51,11 @@ const PokeDetails = () => {
               className="h-80"
             />
           </div>
+          <Link
+        to='/update/:id'
+        className='text-white bg-[color:var(--sec-color)] hidden md:flex items-center py-2 px-3 rounded-md hover:opacity-80'>
+        Update Pokemon
+      </Link>
         </div>
       </div>
     </>

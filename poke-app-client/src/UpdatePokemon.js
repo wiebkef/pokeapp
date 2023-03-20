@@ -1,29 +1,28 @@
  import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import axios from "./axiosInstance";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams,Link } from "react-router-dom";
 
 const UpdatePokemon = () => {
-  const [form, setForm] = useState({});
+  const [pokemon, setPokemon] = useState ({name:'', pokeType:'', attacks:'',image:''})
+  //const [form, setForm] = useState({});
   const [error, setError] = useState({});
   const navigate = useNavigate();
   const { id } = useParams();
   
 useEffect (() => {
-    axios
-    .get("/api/pokemons", form)
-    .then((res) => console.log(res.data))
-      
-      .catch((err) => {
-        //console.log(err.response.data.errors); )}
-        setError(err.response.data.errors);
-      })
-}
-)
+    axios  
+    .get('/api/pokemons/${id}')
+    .then((res) => setPokemon(res.data))
+    .catch((e) => console.log(e));
+        
+   }, [id]  );
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put("/api/pokemons", form)
+      .put('/api/pokemons/${id}', pokemon)
       .then((res) => {
         console.log(res.data);
         navigate(`/user_pokemon/${res.data.id}`);
@@ -36,7 +35,7 @@ useEffect (() => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    setPokemon({ ...pokemon, [name]: value });
   };
 
   return (
@@ -46,7 +45,7 @@ useEffect (() => {
     "
       >
         <div className="flex flex-col justify-start space-y-20 items-center w-[45%] px-0 py-[30px] border-r-[2px] border-r-[rgba(30,30,30,0.8)] border-solid bg-[rgba(20,20,20,0.8)]">
-          <h2 className="text-3xl font-light pt-[5px]">Create a Pokemon</h2>
+          <h2 className="text-3xl font-light pt-[5px]">Ubdate a Pokemon</h2>
           <AiOutlineQuestionCircle size={120} />
         </div>
         <form
@@ -61,6 +60,7 @@ useEffect (() => {
                 type="text"
                 className="inputFields"
                 name="name"
+                value={pokemon ? pokemon.name : ''}
                 placeholder="Name"
                 required
               />
@@ -75,9 +75,10 @@ useEffect (() => {
                 onChange={handleChange}
                 type="text"
                 className="inputFields"
-                name="type"
+                name="pokeType"
+                value={pokemon? pokemon.pokeType: ''}
                 placeholder="Type"
-                required
+                
               />
             </li>
             {error.type && (
@@ -91,6 +92,7 @@ useEffect (() => {
                 type="text"
                 className="inputFields"
                 name="attacks"
+                value={pokemon?pokemon.attacks:''}
                 placeholder="Attacks"
                 required
               />
@@ -106,6 +108,7 @@ useEffect (() => {
                 type="text"
                 className="inputFields"
                 name="image"
+                value={pokemon?pokemon.image:''}
                 placeholder="Image URL"
                 required
               />
@@ -119,8 +122,8 @@ useEffect (() => {
               <input
                 type="submit"
                 className="border-2 text-lg text-[white] cursor-pointer transition-[0.4s] mt-5 px-[50px] py-2.5 border-solid border-[rgba(170,69,91,1)] hover:px-20 hover:py-2.5 hover:bg-[rgba(20,20,20,0.8)]"
-                name="create"
-                value="update Pokemon"
+                name="UpdatePokemon"
+                value="UpdatePokemon"
               />
             </li>
           </ul>
