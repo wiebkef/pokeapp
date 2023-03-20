@@ -1,6 +1,6 @@
 import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { useState } from "react";
-
+import axios from "./axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 const AddPokemon = ({ addUserPokemon }) => {
@@ -10,6 +10,15 @@ const AddPokemon = ({ addUserPokemon }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    axios
+      .post(`/api/pokemons`, form)
+
+      .then((res) => {
+        console.log(res.data);
+        navigate(`/user_pokemon/${res.data._id}`);
+      })
+
+      .catch((e) => console.log(e));
     addUserPokemon(form);
     navigate(`/user_pokemon/${form.id}`);
   };
