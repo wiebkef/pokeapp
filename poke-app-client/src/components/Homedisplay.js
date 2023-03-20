@@ -118,7 +118,7 @@ function Homedisplay({ external }) {
                           opacity: 0.2,
                         }}></div>
                       <img
-                        className='relative w-40 motion-safe:animate-pulse'
+                        className='relative w-40'
                         src={pokemon.image}
                         alt='pokecard'></img>
                     </div>

@@ -20,10 +20,12 @@ function Navbar() {
             size={25}
           />
         </div>
-        <h1 className='text-[color:var(--sec-color)] font-bold text-2 px-2 lg:text-3xl md:text-2xl'>
+        <NavLink
+          className='text-[color:var(--sec-color)] font-bold text-2 px-2 lg:text-3xl md:text-2xl'
+          to='/'>
           POKE
           <span className='font-light'> WORLD</span>
-        </h1>
+        </NavLink>
       </div>
 
       <Search />
