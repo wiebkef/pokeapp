@@ -35,6 +35,7 @@ function App() {
           element={<AddPokemon addUserPokemon={addUserPokemon} />}
         />
         <Route path={"/update/:id"} />
+
         <Route
           path={"/pokemons/:id"}
           element={
@@ -44,6 +45,9 @@ function App() {
             />
           }
         />
+
+        <Route path={"/search"} element={<Homedisplay external={false} />} />
+
       </Routes>
     </div>
   );
