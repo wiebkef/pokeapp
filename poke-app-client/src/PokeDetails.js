@@ -1,7 +1,7 @@
 import title from "./title.png";
 import axios from "./axiosInstance";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const PokeDetails = ({ userPokemons, setUserPokemons }) => {
@@ -10,6 +10,8 @@ const PokeDetails = ({ userPokemons, setUserPokemons }) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  console.log(id)
+  
   useEffect(() => {
     const fetchPokemonData = async () => {
       // Checks if the 'id' is a MongoDB ObjectId
@@ -171,6 +173,11 @@ const PokeDetails = ({ userPokemons, setUserPokemons }) => {
               className="h-80"
             />
           </div>
+          <Link
+          to={`/update/${id}`}
+          className='text-white bg-[color:var(--sec-color)] items-center rounded-md hover:opacity-80 px-2 py-1'>
+          Update Pokey
+        </Link>
         </div>
         {pokemonData?.userAdded && (
           <button
